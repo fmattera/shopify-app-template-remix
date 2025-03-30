@@ -3,7 +3,7 @@
 client_id = "243892f3360adb4d37e8d85bfc78792b"
 name = "roast-it-app"
 handle = "roast-it-app"
-application_url = "https://utah-aerial-remembered-roles.trycloudflare.com"
+application_url = "https://forecasts-score-neighbor-turbo.trycloudflare.com"
 embedded = true
 
 [webhooks]
@@ -23,9 +23,9 @@ scopes = "write_products, write_script_tags"
 
 [auth]
 redirect_urls = [
-  "https://utah-aerial-remembered-roles.trycloudflare.com/auth/callback",
-  "https://utah-aerial-remembered-roles.trycloudflare.com/auth/shopify/callback",
-  "https://utah-aerial-remembered-roles.trycloudflare.com/api/auth/callback"
+  "https://forecasts-score-neighbor-turbo.trycloudflare.com/auth/callback",
+  "https://forecasts-score-neighbor-turbo.trycloudflare.com/auth/shopify/callback",
+  "https://forecasts-score-neighbor-turbo.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]
