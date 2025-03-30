@@ -8,8 +8,8 @@ import {
   Card,
   Button,
   BlockStack,
-  Box,
   InlineStack,
+  Icon,
 } from "@shopify/polaris";
 import { TitleBar, useAppBridge } from "@shopify/app-bridge-react";
 import { authenticate } from "../shopify.server";
@@ -43,7 +43,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     );
 
     const data = await response.json();
-    console.log("Script tag creation response:", data);
+    // console.log("Script tag creation response:", data);
 
     if (data.data.scriptTagCreate.userErrors.length > 0) {
       console.error("GraphQL errors:", data.data.scriptTagCreate.userErrors);
@@ -81,18 +81,30 @@ export default function Index() {
 
   return (
     <Page>
-      <TitleBar title="Remix app template">
-        <button variant="primary" onClick={injectScript}>
-          Inject Script
-        </button>
-      </TitleBar>
+      <TitleBar title="ROASt it - Integrate your store with AI" />
       <BlockStack gap="500">
         <Layout>
           <Layout.Section>
             <Card>
-              <BlockStack gap="500">
+              <BlockStack gap="300">
                 <Text as="h2" variant="headingMd">
-                  Inject a script into your store
+                  Step 1: Give read-only access
+                </Text>
+                <Text as="p" variant="bodyMd">
+                  Email: <strong>mattera.ita@gmail.com</strong>
+                </Text>
+                <Text as="p" variant="bodyMd">
+                  This will allow ROASt it to scrape your Google Ads keywords and train our AI on them.
+                </Text>
+              </BlockStack>
+            </Card>
+ 
+            <div style={{ height: "20px" }} />
+
+            <Card>
+              <BlockStack gap="300">
+                <Text as="h2" variant="headingMd">
+                  Step 2: Attach ROASt it to your store
                 </Text>
                 <InlineStack gap="300">
                   <Button loading={isLoading} onClick={injectScript}>
@@ -100,9 +112,12 @@ export default function Index() {
                   </Button>
                 </InlineStack>
                 {message && (
-                  <Text as="p" variant="bodyMd">
-                    {message}
-                  </Text>
+                  <InlineStack gap="300">
+                    {fetcher.data?.success && <span role="img" aria-label="success">✅</span>}
+                    <Text as="p" variant="bodyMd">
+                      {message}
+                    </Text>
+                  </InlineStack>
                 )}
               </BlockStack>
             </Card>
