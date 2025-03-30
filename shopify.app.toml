@@ -3,7 +3,7 @@
 client_id = "243892f3360adb4d37e8d85bfc78792b"
 name = "roast-it-app"
 handle = "roast-it-app"
-application_url = "https://forecasts-score-neighbor-turbo.trycloudflare.com"
+application_url = "https://element-continental-william-maiden.trycloudflare.com"
 embedded = true
 
 [webhooks]
@@ -19,13 +19,13 @@ api_version = "2025-01"
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "write_products, write_script_tags"
+scopes = "write_script_tags, write_content, write_products"
 
 [auth]
 redirect_urls = [
-  "https://forecasts-score-neighbor-turbo.trycloudflare.com/auth/callback",
-  "https://forecasts-score-neighbor-turbo.trycloudflare.com/auth/shopify/callback",
-  "https://forecasts-score-neighbor-turbo.trycloudflare.com/api/auth/callback"
+  "https://element-continental-william-maiden.trycloudflare.com/auth/callback",
+  "https://element-continental-william-maiden.trycloudflare.com/auth/shopify/callback",
+  "https://element-continental-william-maiden.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]

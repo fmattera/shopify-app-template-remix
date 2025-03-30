@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import type { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
 import { useFetcher } from "@remix-run/react";
 import {
@@ -60,11 +60,24 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 export default function Index() {
   const fetcher = useFetcher<typeof action>();
   const shopify = useAppBridge();
+  const [message, setMessage] = useState<string | null>(null);
   const isLoading =
     ["loading", "submitting"].includes(fetcher.state) &&
     fetcher.formMethod === "POST";
 
-  const injectScript = () => fetcher.submit({}, { method: "POST" });
+  const injectScript = () => {
+    fetcher.submit({}, { method: "POST" });
+  };
+
+  useEffect(() => {
+    if (fetcher.state === "idle" && fetcher.data) {
+      if (fetcher.data.success) {
+        setMessage("The script has been injected successfully.");
+      } else {
+        setMessage("Failed to inject the script.");
+      }
+    }
+  }, [fetcher.state, fetcher.data]);
 
   return (
     <Page>
@@ -86,6 +99,11 @@ export default function Index() {
                     Inject Script
                   </Button>
                 </InlineStack>
+                {message && (
+                  <Text as="p" variant="bodyMd">
+                    {message}
+                  </Text>
+                )}
               </BlockStack>
             </Card>
           </Layout.Section>
